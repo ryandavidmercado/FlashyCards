@@ -1,0 +1,4 @@
+node_modules/
+docs/
+.attachignore
+.qualified-attach.json

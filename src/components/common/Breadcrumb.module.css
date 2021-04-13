@@ -1,0 +1,12 @@
+.breadcrumb::before {
+  content: "/";
+  padding: 0 5px;
+  color: black;
+}
+
+.breadcrumb:first-child {
+  margin-left: -12px;
+}
+.breadcrumb:first-child::before {
+  content: "";
+}
