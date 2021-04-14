@@ -1,6 +1,7 @@
 import styles from "../common/Deck.module.css";
 
 import Button from "../common/Button";
+import AutoCentered from "../common/AutoCentered";
 
 import { useState, useRef, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -77,38 +78,42 @@ function EditDeck() {
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className={styles.deck}>
-        <div className={styles.deckTitle}>
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={formState.name}
-            onChange={({ target }) => changeHandler(target)}
-            autoFocus={true}
-          />
-        </div>
-        <div className={styles.deckBody}>
-          <textarea
-            ref={descContainer}
-            placeholder="Description"
-            value={formState.description}
-            name="description"
-            onChange={({ target }) => changeHandler(target)}
-          />
-          <hr />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", gap: "5px" }}>
-              <Link to={cancelLink}>
-                <Button variant="secondary">Cancel</Button>
-              </Link>
-              <Button type="submit">Submit</Button>
+    <AutoCentered requireDesktop={true}>
+      <div className={styles.screenContainer}>
+        <form onSubmit={submitHandler}>
+          <div className={[styles.deck, styles.deckSingle].join(" ")}>
+            <div className={styles.deckTitle}>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={formState.name}
+                onChange={({ target }) => changeHandler(target)}
+                autoFocus={true}
+              />
+            </div>
+            <div className={styles.deckBody}>
+              <textarea
+                ref={descContainer}
+                placeholder="Description"
+                value={formState.description}
+                name="description"
+                onChange={({ target }) => changeHandler(target)}
+              />
+            </div>
+            <hr />
+            <div className={styles.deckFooter}>
+              <div style={{ display: "flex", gap: "5px" }}>
+                <Link to={cancelLink}>
+                  <Button variant="secondary">Cancel</Button>
+                </Link>
+                <Button type="submit">Submit</Button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+    </AutoCentered>
   );
 }
 

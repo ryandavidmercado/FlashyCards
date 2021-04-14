@@ -1,6 +1,7 @@
 import styles from "../common/Card.module.css";
 
 import Button from "../common/Button";
+import AutoCentered from "../common/AutoCentered";
 
 import { useState, useRef, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -76,42 +77,43 @@ function EditCard() {
         deckId: Number(params.deckId),
       }).then(() => history.push(linkToParentDeck));
     }
-    return null;
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className={styles.cardContainer}>
-        <div className={styles.card} style={{ backgroundColor: "white" }}>
-          <textarea
-            ref={frontContainer}
-            type="text"
-            placeholder="Front"
-            value={formState.front}
-            name="front"
-            onChange={({ target }) => changeHandler(target)}
-            autoFocus={true}
-          />
-          <hr />
-          <textarea
-            ref={backContainer}
-            placeholder="Back"
-            value={formState.back}
-            name="back"
-            onChange={({ target }) => changeHandler(target)}
-          />
-          <hr />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", gap: "5px" }}>
-              <Link to={linkToParentDeck}>
-                <Button variant="secondary">Cancel</Button>
-              </Link>
-              <Button type="submit">Submit</Button>
+    <AutoCentered>
+      <form onSubmit={submitHandler}>
+        <div className={styles.cardContainer}>
+          <div className={styles.card} style={{ backgroundColor: "white" }}>
+            <textarea
+              ref={frontContainer}
+              type="text"
+              placeholder="Front"
+              value={formState.front}
+              name="front"
+              onChange={({ target }) => changeHandler(target)}
+              autoFocus={true}
+            />
+            <hr />
+            <textarea
+              ref={backContainer}
+              placeholder="Back"
+              value={formState.back}
+              name="back"
+              onChange={({ target }) => changeHandler(target)}
+            />
+            <hr />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", gap: "5px" }}>
+                <Link to={linkToParentDeck}>
+                  <Button variant="secondary">Cancel</Button>
+                </Link>
+                <Button type="submit">Submit</Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </AutoCentered>
   );
 }
 

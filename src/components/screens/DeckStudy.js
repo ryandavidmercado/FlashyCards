@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import Card from "../common/Card";
 import NotEnoughCards from "./NotEnoughCards";
+import AutoCentered from "../common/AutoCentered";
 
 function DeckStudy() {
   const params = useParams();
@@ -42,9 +43,13 @@ function DeckStudy() {
 
   if (!deck.id) return null;
   if (deck.id && deck.cards.length < 3)
-    return <NotEnoughCards cardCount={deck.cards.length} />;
+    return (
+      <AutoCentered>
+        <NotEnoughCards cardCount={deck.cards.length} />
+      </AutoCentered>
+    );
   return (
-    <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+    <AutoCentered>
       <Card
         card={deck.cards[cardPointer]}
         view="single"
@@ -55,7 +60,7 @@ function DeckStudy() {
         setHasFlipped={setHasFlipped}
         key={`study-card-${deck.cards[cardPointer].id}`}
       />
-    </div>
+    </AutoCentered>
   );
 }
 

@@ -1,4 +1,5 @@
 import Button from "./Button";
+import ConditionalWrapper from "./ConditionalWrapper";
 import remove from "../../img/delete.svg";
 import styles from "./Card.module.css";
 import { useParams, useRouteMatch, Link } from "react-router-dom";
@@ -49,7 +50,12 @@ function Card({
   let bgColor = hasFlipped ? "rgb(220,255,250)" : "white";
 
   return (
-    <div className={styles.cardContainer}>
+    <ConditionalWrapper
+      condition={view === "single"}
+      wrapper={(children) => (
+        <div className={styles.cardContainer}>{children}</div>
+      )}
+    >
       <div className={styles.card} style={{ backgroundColor: bgColor }}>
         {view === "group" && (
           <Fragment>
@@ -89,7 +95,7 @@ function Card({
           </Fragment>
         )}
       </div>
-    </div>
+    </ConditionalWrapper>
   );
 }
 

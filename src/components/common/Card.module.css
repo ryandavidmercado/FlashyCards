@@ -1,16 +1,17 @@
-.cardContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 .card {
   text-align: center;
   padding: 15px;
-  width: 100%;
+  width: min(600px, 100%);
   margin: 10px 15px;
   margin-bottom: 0px;
   border-radius: 15px;
   box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cardContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .card p {
@@ -24,4 +25,26 @@
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+.card div:last-child {
+  flex-grow: 0;
+}
+
+.card p,
+.card hr,
+.card h2 {
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 700px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0;
+  }
+  .card hr {
+    width: 90%;
+  }
 }

@@ -6,9 +6,30 @@
   border-bottom-right-radius: 15px;
   margin-left: -3px;
   padding-left: 3px;
+  display: flex;
+  flex-direction: column;
 }
 .deckTitle,
 .deckBody {
+  padding: 15px;
+}
+.deckTitle {
+  flex-grow: 0;
+}
+.deckBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  flex-grow: 1;
+}
+.deckFooter {
+  display: flex;
+  margin: 0;
+  padding-top: 0;
+  width: 100%;
+  justify-content: space-between;
+  flex-grow: 0;
   padding: 15px;
 }
 .deckTitle {
@@ -16,6 +37,7 @@
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 3px black;
+  flex: 1;
 }
 .deck h2 {
   margin-bottom: 0;
@@ -38,6 +60,7 @@
 .deck input {
   font-size: 1.5em;
   margin-left: -6px;
+  width: 100%;
 }
 
 .deck textarea {
@@ -46,7 +69,37 @@
   width: 100%;
   height: auto;
 }
-
+.deck p {
+  margin: 0;
+}
+.deck p:last-child {
+  margin-top: 10px;
+}
 .input {
   background-color: rgba(0, 0, 0, 0.5);
+}
+.deck hr {
+  width: 90%;
+  margin: 0;
+  align-self: center;
+}
+
+@media screen and (min-width: 700px) {
+  .deck {
+    margin: 0;
+    padding: 0;
+    width: max(280px, 30%);
+    border-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  .deckSingle {
+    width: 600px;
+  }
+  .screenContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

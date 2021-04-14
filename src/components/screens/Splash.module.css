@@ -1,8 +1,7 @@
 .splashContainer {
-  position: fixed;
   top: 0;
   z-index: 1;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-color: #1f8c7c;
   color: white;
@@ -10,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 2px 0px black;
 }
 
 .headerContainer {

@@ -47,26 +47,31 @@ function Card({
   }
 
   return (
-    <div className={styles.deck}>
+    //give the deck the deckSingle class if we're viewing this alone, but don't otherwise
+    <div
+      className={
+        (view === "single" ? styles.deckSingle : "") + " " + styles.deck
+      }
+    >
       <div className={styles.deckTitle}>
         <h2>{name}</h2>
       </div>
       <div className={styles.deckBody}>
         <p>{description}</p>
         <p className={styles.muted}>{cards.length} cards</p>
-        <hr />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", gap: "5px" }}>
-            <Link to={buttonALink}>
-              <Button variant="secondary">{buttonAText}</Button>
-            </Link>
-            <Link to={`/decks/${id}/study`}>
-              <Button>{buttonBText}</Button>
-            </Link>
-          </div>
-          <div onClick={deleteHandler}>
-            <img src={remove} style={{ height: "30px", cursor: "pointer" }} />
-          </div>
+      </div>
+      <hr />
+      <div className={styles.deckFooter}>
+        <div style={{ display: "flex", gap: "5px" }}>
+          <Link to={buttonALink}>
+            <Button variant="secondary">{buttonAText}</Button>
+          </Link>
+          <Link to={`/decks/${id}/study`}>
+            <Button>{buttonBText}</Button>
+          </Link>
+        </div>
+        <div onClick={deleteHandler}>
+          <img src={remove} style={{ height: "30px", cursor: "pointer" }} />
         </div>
       </div>
     </div>

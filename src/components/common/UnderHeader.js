@@ -17,6 +17,7 @@ function UnderHeader({ children, headerChange }) {
       style={{
         paddingTop: `${paddingTop}px`,
         paddingBottom: "15px",
+        height: "1px",
         minHeight: "100%",
       }}
       id="under-header"

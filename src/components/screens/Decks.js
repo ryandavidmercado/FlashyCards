@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
+import styles from "./Decks.module.css";
 import Deck from "../common/Deck";
 import NewButton from "../common/NewButton";
+import AutoCentered from "../common/AutoCentered";
 import { listDecks } from "../../utils/api";
 
 function Decks() {
@@ -17,17 +19,19 @@ function Decks() {
 
   if (!decks.length) return null;
   return (
-    <Fragment>
-      {decks.map((deck) => (
-        <Deck
-          deck={deck}
-          key={`deck-${deck.id}`}
-          view="group"
-          updateDecks={updateDecks}
-        />
-      ))}
+    <AutoCentered requireDesktop={true}>
+      <div className={styles.decksContainer}>
+        {decks.map((deck) => (
+          <Deck
+            deck={deck}
+            key={`deck-${deck.id}`}
+            view="group"
+            updateDecks={updateDecks}
+          />
+        ))}
+      </div>
       <NewButton type="deck" />
-    </Fragment>
+    </AutoCentered>
   );
 }
 

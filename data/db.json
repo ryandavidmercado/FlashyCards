@@ -14,7 +14,7 @@
   "cards": [
     {
       "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
+      "back": "Virtual DOM updates are faster but do not directly update the HTML.",
       "id": 1,
       "deckId": 1
     },
@@ -26,7 +26,7 @@
     },
     {
       "front": "How do you pass data 'down' to a React child component?",
-      "back": "As properties or propsssss",
+      "back": "As properties or props.",
       "id": 3,
       "deckId": 1
     },
@@ -41,12 +41,6 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
-    },
-    {
-      "front": "this is my new test card! what's it gonna say",
-      "back": "exactly what it says right here",
-      "deckId": 1,
-      "id": 6
     }
   ]
 }
