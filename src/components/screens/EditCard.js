@@ -36,7 +36,7 @@ function EditCard() {
     return () => abortController.abort();
   }, []);
 
-  //after loading a deck, fill the form with said deck
+  //after loading a card, fill the form with said card
   useEffect(() => {
     setFormState({
       front: card.front,
