@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import ReactLoading from "react-loading";
+import useLoad from "../../utils/use-load";
 import styles from "./Decks.module.css";
 import Deck from "../common/Deck";
 import NewButton from "../common/NewButton";
@@ -12,6 +12,7 @@ import LoadingBars from "../common/LoadingBars";
 function Decks() {
   const [decks, setDecks] = useState([]);
   const showBranding = useMediaQuery({ minWidth: 700 });
+  const loaded = useLoad(decks.length);
 
   function updateDecks(signal) {
     listDecks(signal).then(setDecks);
@@ -22,7 +23,7 @@ function Decks() {
     return () => abortController.abort();
   }, []);
 
-  if (!decks.length)
+  if (!loaded)
     return (
       <AutoCentered>
         <Branding />

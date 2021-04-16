@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { readDeck } from "../../utils/api";
+import useLoad from "../../utils/use-load";
 import styles from "./DeckView.module.css";
 import NewButton from "../common/NewButton";
 import Card from "../common/Card";
@@ -11,6 +12,7 @@ import LoadingBars from "../common/LoadingBars";
 function DeckView() {
   const { deckId: id } = useParams();
   const [deck, setDeck] = useState({});
+  const loaded = useLoad(deck.name);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -23,7 +25,7 @@ function DeckView() {
     readDeck(id, signal).then(setDeck);
   }
 
-  if (!deck.name) return <LoadingBars />;
+  if (!loaded) return <LoadingBars />;
   return (
     <AutoCentered requireDesktop={true}>
       <div className={styles.screenContainer}>

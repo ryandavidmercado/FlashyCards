@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../../utils/api";
+import useLoad from "../../utils/use-load";
 import Card from "../common/Card";
 import NotEnoughCards from "./NotEnoughCards";
 import AutoCentered from "../common/AutoCentered";
@@ -14,6 +15,7 @@ function DeckStudy() {
   const last = deck.cards ? cardPointer === deck.cards.length - 1 : false;
   const pos = deck.cards ? [cardPointer + 1, deck.cards.length] : [];
   const history = useHistory();
+  const loaded = useLoad(deck.id);
 
   //fetch our card on load
   useEffect(() => {
@@ -42,7 +44,7 @@ function DeckStudy() {
     setCardPointer((cardPointer) => cardPointer + 1);
   }
 
-  if (!deck.id) return <LoadingBars />;
+  if (!loaded) return <LoadingBars />;
   if (deck.id && deck.cards.length < 3)
     return (
       <AutoCentered>

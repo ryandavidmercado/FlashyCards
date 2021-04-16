@@ -8,6 +8,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { createCard, updateCard, readCard } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
+import useLoad from "../../utils/use-load";
 import LoadingBars from "../common/LoadingBars";
 
 function EditCard() {
@@ -21,6 +22,8 @@ function EditCard() {
     front: "",
     back: "",
   });
+
+  const loaded = useLoad(card.front);
 
   //if we're editing a card, load that card and set our state to edit
   useEffect(() => {
@@ -83,7 +86,7 @@ function EditCard() {
     }
   }
 
-  if (params.cardId && !card.front) return <LoadingBars />;
+  if (params.cardId && !loaded) return <LoadingBars />;
   return (
     <AutoCentered>
       <form onSubmit={submitHandler}>

@@ -8,6 +8,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { createDeck, readDeck, updateDeck } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
+import useLoad from "../../utils/use-load";
 import LoadingBars from "../common/LoadingBars";
 
 function EditDeck() {
@@ -21,6 +22,8 @@ function EditDeck() {
     name: "",
     description: "",
   });
+
+  const loaded = useLoad(deck.name);
 
   //if we're editing a deck, load that deck and set our state to edit
   useEffect(() => {
@@ -79,7 +82,7 @@ function EditDeck() {
     }
   }
 
-  if (params.deckId && !deck.name) return <LoadingBars />;
+  if (params.deckId && !loaded) return <LoadingBars />;
   return (
     <AutoCentered requireDesktop={true}>
       <div className={styles.screenContainer}>
