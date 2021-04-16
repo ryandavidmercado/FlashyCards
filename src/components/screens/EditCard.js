@@ -8,13 +8,11 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { createCard, updateCard, readCard } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
+import LoadingBars from "../common/LoadingBars";
 
 function EditCard() {
   const history = useHistory();
   const params = useParams();
-  // references to our textboxes, so we can autoResize them later
-  const frontContainer = useRef(null);
-  const backContainer = useRef(null);
   const linkToParentDeck = `/decks/${params.deckId}`;
 
   const [card, setCard] = useState({});
@@ -45,8 +43,14 @@ function EditCard() {
   }, [card]);
 
   //call autoResizeBox whenever the textboxes change
-  useEffect(() => autoResizeBox(frontContainer), [formState.front]);
-  useEffect(() => autoResizeBox(backContainer), [formState.back]);
+  useEffect(() => {
+    const front = document.querySelector("#edit-card-front");
+    if (front) autoResizeBox(front);
+  }, [formState.front]);
+  useEffect(() => {
+    const back = document.querySelector("#edit-card-back");
+    if (back) autoResizeBox(back);
+  }, [formState.back]);
 
   function changeHandler(target) {
     setFormState((formState) => ({
@@ -79,26 +83,27 @@ function EditCard() {
     }
   }
 
+  if (params.cardId && !card.front) return <LoadingBars />;
   return (
     <AutoCentered>
       <form onSubmit={submitHandler}>
         <div className={styles.cardContainer}>
           <div className={styles.card} style={{ backgroundColor: "white" }}>
             <textarea
-              ref={frontContainer}
               type="text"
               placeholder="Front"
               value={formState.front}
               name="front"
               onChange={({ target }) => changeHandler(target)}
               autoFocus={true}
+              id="edit-card-front"
             />
             <hr />
             <textarea
-              ref={backContainer}
               placeholder="Back"
               value={formState.back}
               name="back"
+              id="edit-card-back"
               onChange={({ target }) => changeHandler(target)}
             />
             <hr />

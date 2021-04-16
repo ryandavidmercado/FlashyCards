@@ -4,6 +4,7 @@ import { readDeck } from "../../utils/api";
 import Card from "../common/Card";
 import NotEnoughCards from "./NotEnoughCards";
 import AutoCentered from "../common/AutoCentered";
+import LoadingBars from "../common/LoadingBars";
 
 function DeckStudy() {
   const params = useParams();
@@ -41,7 +42,7 @@ function DeckStudy() {
     setCardPointer((cardPointer) => cardPointer + 1);
   }
 
-  if (!deck.id) return null;
+  if (!deck.id) return <LoadingBars />;
   if (deck.id && deck.cards.length < 3)
     return (
       <AutoCentered>

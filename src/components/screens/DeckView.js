@@ -6,6 +6,7 @@ import NewButton from "../common/NewButton";
 import Card from "../common/Card";
 import Deck from "../common/Deck";
 import AutoCentered from "../common/AutoCentered";
+import LoadingBars from "../common/LoadingBars";
 
 function DeckView() {
   const { deckId: id } = useParams();
@@ -22,7 +23,7 @@ function DeckView() {
     readDeck(id, signal).then(setDeck);
   }
 
-  if (!deck.name) return null;
+  if (!deck.name) return <LoadingBars />;
   return (
     <AutoCentered requireDesktop={true}>
       <div className={styles.screenContainer}>

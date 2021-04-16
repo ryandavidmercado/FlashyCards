@@ -1,9 +1,8 @@
 // automatically resizes a textbox to fit its content
 
 export function autoResizeBox(inputRef) {
-  const inputBox = inputRef.current;
-  inputBox.style.height = "auto";
-  inputBox.style.height = inputBox.scrollHeight + "px";
+  inputRef.style.height = "auto";
+  inputRef.style.height = inputRef.scrollHeight + "px";
 }
 
 // automatically resizes a text input to fit its content

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
+import ReactLoading from "react-loading";
 import styles from "./Decks.module.css";
 import Deck from "../common/Deck";
 import NewButton from "../common/NewButton";
@@ -6,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import AutoCentered from "../common/AutoCentered";
 import { listDecks } from "../../utils/api";
 import Branding from "../common/Branding";
+import LoadingBars from "../common/LoadingBars";
 
 function Decks() {
   const [decks, setDecks] = useState([]);
@@ -20,7 +22,14 @@ function Decks() {
     return () => abortController.abort();
   }, []);
 
-  if (!decks.length) return null;
+  if (!decks.length)
+    return (
+      <AutoCentered>
+        <Branding />
+        <LoadingBars />
+      </AutoCentered>
+    );
+
   return (
     <AutoCentered requireDesktop={true}>
       <Branding visible={showBranding} />

@@ -8,12 +8,11 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { createDeck, readDeck, updateDeck } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
+import LoadingBars from "../common/LoadingBars";
 
 function EditDeck() {
   const history = useHistory();
   const params = useParams();
-  // references to our textboxes, so we can autoResize them later
-  const descContainer = useRef(null);
 
   const [deck, setDeck] = useState({});
   const [edit, setEdit] = useState(false);
@@ -44,7 +43,10 @@ function EditDeck() {
   }, [deck]);
 
   //call autoResizeBox whenever the description changes
-  useEffect(() => autoResizeBox(descContainer), [formState.description]);
+  useEffect(() => {
+    const description = document.querySelector("#description");
+    if (description) autoResizeBox(description);
+  }, [formState.description]);
 
   function changeHandler(target) {
     setFormState((formState) => ({
@@ -77,6 +79,7 @@ function EditDeck() {
     }
   }
 
+  if (params.deckId && !deck.name) return <LoadingBars />;
   return (
     <AutoCentered requireDesktop={true}>
       <div className={styles.screenContainer}>
@@ -94,11 +97,11 @@ function EditDeck() {
             </div>
             <div className={styles.deckBody}>
               <textarea
-                ref={descContainer}
                 placeholder="Description"
                 value={formState.description || ""}
                 name="description"
                 onChange={({ target }) => changeHandler(target)}
+                id="edit-deck-description"
               />
             </div>
             <hr />
