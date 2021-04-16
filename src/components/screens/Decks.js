@@ -12,7 +12,7 @@ import LoadingBars from "../common/LoadingBars";
 function Decks() {
   const [decks, setDecks] = useState([]);
   const showBranding = useMediaQuery({ minWidth: 700 });
-  const loaded = useLoad(decks.length);
+  const loaded = useLoad(decks.length, 1000);
 
   function updateDecks(signal) {
     listDecks(signal).then(setDecks);
