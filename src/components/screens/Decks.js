@@ -1,13 +1,16 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+
+import { listDecks } from "../../utils/api";
 import useLoad from "../../utils/use-load";
-import styles from "./Decks.module.css";
+
+import Branding from "../common/Branding";
 import Deck from "../common/Deck";
 import NewButton from "../common/NewButton";
-import { useMediaQuery } from "react-responsive";
 import AutoCentered from "../common/AutoCentered";
-import { listDecks } from "../../utils/api";
-import Branding from "../common/Branding";
 import LoadingBars from "../common/LoadingBars";
+
+import styles from "./Decks.module.css";
 
 function Decks() {
   const [decks, setDecks] = useState([]);

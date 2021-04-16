@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
 import { readDeck } from "../../utils/api";
+
 import Breadcrumb from "./Breadcrumb";
 
 function BreadcrumbAuto({ setHeaderChange }) {

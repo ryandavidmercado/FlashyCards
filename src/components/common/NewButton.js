@@ -1,7 +1,8 @@
-import styles from "./NewButton.module.css";
-import add from "../../img/add.svg";
 import { Link, useParams } from "react-router-dom";
 import classNames from "../../utils/class-names";
+import add from "../../img/add.svg";
+
+import styles from "./NewButton.module.css";
 
 function NewButton({ type }) {
   const params = useParams();

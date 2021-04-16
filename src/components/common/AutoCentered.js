@@ -1,6 +1,7 @@
 import { useMediaQuery } from "react-responsive";
-import styles from "./AutoCentered.module.css";
 import classNames from "../../utils/class-names";
+
+import styles from "./AutoCentered.module.css";
 
 //vertically centers content IF content is shorter than viewport
 //can optionally only center content on desktop

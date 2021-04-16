@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+
 import { readDeck } from "../../utils/api";
 import useLoad from "../../utils/use-load";
+
 import Card from "../common/Card";
 import NotEnoughCards from "./NotEnoughCards";
 import AutoCentered from "../common/AutoCentered";
@@ -12,8 +14,10 @@ function DeckStudy() {
   const [deck, setDeck] = useState({});
   const [cardPointer, setCardPointer] = useState(0);
   const [hasFlipped, setHasFlipped] = useState(false);
+
   const last = deck.cards ? cardPointer === deck.cards.length - 1 : false;
   const pos = deck.cards ? [cardPointer + 1, deck.cards.length] : [];
+
   const history = useHistory();
   const loaded = useLoad(deck.id);
 

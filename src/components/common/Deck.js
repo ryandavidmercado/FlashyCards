@@ -1,8 +1,10 @@
-import styles from "./Deck.module.css";
-import Button from "./Button";
-import DeleteButton from "./DeleteButton";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
+
+import DeleteButton from "./DeleteButton";
+import Button from "./Button";
+
+import styles from "./Deck.module.css";
 
 function Card({
   deck: { name, description, id, cards } = {},

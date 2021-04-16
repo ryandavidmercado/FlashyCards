@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Header.module.css";
-import logo from "../../img/logo.svg";
 import BreadcrumbAuto from "./BreadcrumbAuto";
+import logo from "../../img/logo.svg";
+
+import styles from "./Header.module.css";
 
 function Header({ setHeaderChange }) {
   return (

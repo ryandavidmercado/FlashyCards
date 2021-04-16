@@ -1,6 +1,7 @@
-import styles from "../common/Card.module.css";
 import { Fragment } from "react";
 import NewButton from "../common/NewButton";
+
+import styles from "../common/Card.module.css";
 
 function NotEnoughCards({ cardCount }) {
   return (

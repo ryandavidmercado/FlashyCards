@@ -1,10 +1,12 @@
-import Button from "./Button";
-import ConditionalWrapper from "./ConditionalWrapper";
-import styles from "./Card.module.css";
+import { Fragment, useState } from "react";
 import { useParams, useRouteMatch } from "react-router-dom";
 import { deleteCard } from "../../utils/api";
-import { Fragment, useState } from "react";
+
+import ConditionalWrapper from "./ConditionalWrapper";
 import DeleteButton from "./DeleteButton";
+import Button from "./Button";
+
+import styles from "./Card.module.css";
 
 function Card({
   card,

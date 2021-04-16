@@ -1,15 +1,15 @@
-import styles from "../common/Card.module.css";
-
-import Button from "../common/Button";
-import AutoCentered from "../common/AutoCentered";
-
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { createCard, updateCard, readCard } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
 import useLoad from "../../utils/use-load";
+
+import Button from "../common/Button";
+import AutoCentered from "../common/AutoCentered";
 import LoadingBars from "../common/LoadingBars";
+
+import styles from "../common/Card.module.css";
 
 function EditCard() {
   const history = useHistory();

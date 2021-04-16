@@ -1,5 +1,5 @@
-import styles from "./Breadcrumb.module.css";
 import { Link } from "react-router-dom";
+import styles from "./Breadcrumb.module.css";
 
 function Breadcrumb({ name, link, active = false }) {
   if (active) return <div className={styles.breadcrumb}>{name}</div>;
