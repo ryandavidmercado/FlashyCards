@@ -1,12 +1,15 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Decks.module.css";
 import Deck from "../common/Deck";
 import NewButton from "../common/NewButton";
+import { useMediaQuery } from "react-responsive";
 import AutoCentered from "../common/AutoCentered";
 import { listDecks } from "../../utils/api";
+import Branding from "../common/Branding";
 
 function Decks() {
   const [decks, setDecks] = useState([]);
+  const showBranding = useMediaQuery({ minWidth: 700 });
 
   function updateDecks(signal) {
     listDecks(signal).then(setDecks);
@@ -20,6 +23,7 @@ function Decks() {
   if (!decks.length) return null;
   return (
     <AutoCentered requireDesktop={true}>
+      <Branding visible={showBranding} />
       <div className={styles.decksContainer}>
         {decks.map((deck) => (
           <Deck

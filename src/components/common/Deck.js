@@ -1,7 +1,7 @@
 import styles from "./Deck.module.css";
 import Button from "./Button";
-import { Link, useHistory, useLocation, useRouteMatch } from "react-router-dom";
-import remove from "../../img/delete.svg";
+import DeleteButton from "./DeleteButton";
+import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
 function Card({
@@ -44,6 +44,8 @@ function Card({
       buttonALink = `${url}/edit`;
       buttonBText = "Study";
       break;
+    default:
+      break;
   }
 
   return (
@@ -63,16 +65,12 @@ function Card({
       <hr />
       <div className={styles.deckFooter}>
         <div style={{ display: "flex", gap: "5px" }}>
-          <Link to={buttonALink}>
-            <Button variant="secondary">{buttonAText}</Button>
-          </Link>
-          <Link to={`/decks/${id}/study`}>
-            <Button>{buttonBText}</Button>
-          </Link>
+          <Button variant="secondary" href={buttonALink}>
+            {buttonAText}
+          </Button>
+          <Button href={`/decks/${id}/study`}>{buttonBText}</Button>
         </div>
-        <div onClick={deleteHandler}>
-          <img src={remove} style={{ height: "30px", cursor: "pointer" }} />
-        </div>
+        <DeleteButton onClick={deleteHandler} type="Deck" />
       </div>
     </div>
   );

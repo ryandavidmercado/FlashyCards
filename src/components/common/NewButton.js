@@ -15,13 +15,15 @@ function NewButton({ type }) {
       link = `/decks/${params.deckId}/cards/new`;
       text = "Add Card";
       break;
+    default:
+      break;
   }
 
   return (
     <div className={styles.buttonContainer}>
       <Link to={link}>
         <div className={styles.button}>
-          <img src={add} width="35px" height="35px"></img>
+          <img src={add} width="35px" height="35px" alt=""></img>
           <h2>{text}</h2>
         </div>
       </Link>

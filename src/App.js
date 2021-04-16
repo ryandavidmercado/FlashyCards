@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./components/common/Header";
 import UnderHeader from "./components/common/UnderHeader";
 import DeckView from "./components/screens/DeckView";
-import Splash from "./components/screens/Splash";
 import Decks from "./components/screens/Decks";
 import NotFound from "./components/screens/NotFound";
 import EditDeck from "./components/screens/EditDeck";

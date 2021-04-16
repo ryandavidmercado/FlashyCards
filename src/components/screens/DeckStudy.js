@@ -25,7 +25,7 @@ function DeckStudy() {
   useEffect(() => {
     if (hasFlipped && last) {
       const result = window.confirm(
-        `Restart session?` + "\nClick 'Cancel' to return home instead."
+        "Restart session?\nClick 'Cancel' to return home instead."
       );
       if (result) {
         setHasFlipped(false);

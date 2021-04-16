@@ -10,12 +10,12 @@
   padding-top: 2px;
 }
 
-.button:active {
-  transform: scale(0.9);
+.button:active,
+.button:hover {
+  transform: scale(0.95);
 }
 
-.button a {
-  color: white;
+.link:hover {
   text-decoration: none;
 }
 

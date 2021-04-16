@@ -11,8 +11,8 @@ function BreadcrumbAuto({ setHeaderChange }) {
     const rawCrumbs = location.pathname.split("/");
     const outputCrumbs =
       rawCrumbs.length === 2
-        ? [<Breadcrumb name="Decks" link="/" active={true} key="bc-decks" />]
-        : [<Breadcrumb name="Decks" link="/" key="bc-decks" />];
+        ? [<Breadcrumb name="Home" link="/" active={true} key="bc-decks" />]
+        : [<Breadcrumb name="Home" link="/" key="bc-decks" />];
 
     let id;
     let deck;
@@ -101,6 +101,7 @@ function BreadcrumbAuto({ setHeaderChange }) {
               key="bc-study"
             />
           );
+          break;
         default:
           break;
       }

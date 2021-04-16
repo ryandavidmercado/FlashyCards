@@ -4,7 +4,7 @@ import Button from "../common/Button";
 import AutoCentered from "../common/AutoCentered";
 
 import { useState, useRef, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { createDeck, readDeck, updateDeck } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
@@ -87,7 +87,7 @@ function EditDeck() {
                 type="text"
                 placeholder="Name"
                 name="name"
-                value={formState.name}
+                value={formState.name || ""}
                 onChange={({ target }) => changeHandler(target)}
                 autoFocus={true}
               />
@@ -96,7 +96,7 @@ function EditDeck() {
               <textarea
                 ref={descContainer}
                 placeholder="Description"
-                value={formState.description}
+                value={formState.description || ""}
                 name="description"
                 onChange={({ target }) => changeHandler(target)}
               />
@@ -104,9 +104,9 @@ function EditDeck() {
             <hr />
             <div className={styles.deckFooter}>
               <div style={{ display: "flex", gap: "5px" }}>
-                <Link to={cancelLink}>
-                  <Button variant="secondary">Cancel</Button>
-                </Link>
+                <Button variant="secondary" href={cancelLink}>
+                  Cancel
+                </Button>
                 <Button type="submit">Submit</Button>
               </div>
             </div>

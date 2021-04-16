@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function UnderHeader({ children, headerChange }) {
   const [paddingTop, setPaddingTop] = useState(0);
-  const location = useLocation();
 
   //set appropriate padding when header renders.
   useEffect(() => {

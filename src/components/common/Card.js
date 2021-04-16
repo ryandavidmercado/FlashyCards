@@ -1,10 +1,10 @@
 import Button from "./Button";
 import ConditionalWrapper from "./ConditionalWrapper";
-import remove from "../../img/delete.svg";
 import styles from "./Card.module.css";
-import { useParams, useRouteMatch, Link } from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 import { deleteCard } from "../../utils/api";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
+import DeleteButton from "./DeleteButton";
 
 function Card({
   card,
@@ -20,16 +20,10 @@ function Card({
   const { url } = useRouteMatch();
 
   const params = useParams();
-  function flipHandler() {
-    console.log("test");
-    if (textPointer === "front") setTextPointer("back");
-    else setTextPointer("front");
-  }
 
   function deleteHandler() {
     const result = window.confirm(
-      `Really delete this card??` +
-        "\nOnce deleted, the card cannot be recovered."
+      "Really delete this card?\nOnce deleted, it cannot be recovered."
     );
     if (result) {
       const abortController = new AbortController();
@@ -64,15 +58,8 @@ function Card({
             <p>{card.back}</p>
             <hr />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Link to={`${url}/cards/${card.id}/edit`}>
-                <Button>Edit</Button>
-              </Link>
-              <div onClick={deleteHandler}>
-                <img
-                  src={remove}
-                  style={{ height: "30px", cursor: "pointer" }}
-                />
-              </div>
+              <Button href={`${url}/cards/${card.id}/edit`}>Edit</Button>
+              <DeleteButton onClick={deleteHandler} type="Card" />
             </div>
           </Fragment>
         )}

@@ -4,7 +4,7 @@ import Button from "../common/Button";
 import AutoCentered from "../common/AutoCentered";
 
 import { useState, useRef, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { createCard, updateCard, readCard } from "../../utils/api";
 import { autoResizeBox } from "../../utils/auto-resize";
@@ -104,9 +104,9 @@ function EditCard() {
             <hr />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div style={{ display: "flex", gap: "5px" }}>
-                <Link to={linkToParentDeck}>
-                  <Button variant="secondary">Cancel</Button>
-                </Link>
+                <Button variant="secondary" href={linkToParentDeck}>
+                  Cancel
+                </Button>
                 <Button type="submit">Submit</Button>
               </div>
             </div>

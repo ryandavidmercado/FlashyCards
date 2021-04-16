@@ -1,0 +1,7 @@
+.delete {
+  height: 30px;
+  cursor: pointer;
+}
+.delete:hover {
+  transform: scale(0.95);
+}
