@@ -111,7 +111,7 @@ function EditCard() {
             />
             <hr />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", gap: "5px" }}>
+              <div className={styles.buttons}>
                 <Button variant="secondary" href={linkToParentDeck}>
                   Cancel
                 </Button>

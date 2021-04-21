@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 15px;
-    gap: 15px;
+  }
+  .decksContainer > div {
+    margin: 5px;
   }
 }

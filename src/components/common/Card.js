@@ -73,7 +73,7 @@ function Card({
             <hr />
             <p>{card[textPointer]}</p>
             <hr />
-            <div style={{ display: "flex", gap: "5px" }}>
+            <div className={styles.buttons}>
               <Button variant="secondary" onClick={flipHandler}>
                 Flip
               </Button>

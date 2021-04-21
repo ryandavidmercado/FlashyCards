@@ -66,7 +66,7 @@ function Card({
       </div>
       <hr />
       <div className={styles.deckFooter}>
-        <div style={{ display: "flex", gap: "5px" }}>
+        <div className={styles.buttons}>
           <Button variant="secondary" href={buttonALink}>
             {buttonAText}
           </Button>

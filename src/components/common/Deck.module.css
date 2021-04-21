@@ -84,6 +84,20 @@
   align-self: center;
 }
 
+.buttons {
+  display: flex;
+}
+
+.buttons a,
+.buttons button {
+  margin-left: 5px;
+}
+
+.buttons a:first-child,
+.buttons button:first-child {
+  margin-left: 0;
+}
+
 @media screen and (min-width: 700px) {
   .deck {
     margin: 0;

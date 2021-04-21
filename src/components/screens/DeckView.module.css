@@ -23,9 +23,11 @@
   .cardsContainer {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
-    margin: 15px 5%;
+    margin: 10px 5%;
     align-items: stretch;
+  }
+  .cardsContainer > div {
+    margin: 5px;
   }
 }
