@@ -29,4 +29,4 @@ The app was designed to be highly functional across desktop and mobile, making i
 * Enhance functionality of study screen
   * Optional randomization of decks
   * Dynamic progress bar
-  * Replace restart session prompt with integrated buttons
+  * <del>Replace restart session prompt with integrated buttons</del>
