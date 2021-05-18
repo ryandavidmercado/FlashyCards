@@ -13,9 +13,7 @@ function DeckStudy() {
   const params = useParams();
   const [deck, setDeck] = useState({});
   const [cardPointer, setCardPointer] = useState(0);
-  const [hasFlipped, setHasFlipped] = useState(false);
 
-  const last = deck.cards ? cardPointer === deck.cards.length - 1 : false;
   const pos = deck.cards ? [cardPointer + 1, deck.cards.length] : [];
 
   const history = useHistory();
@@ -28,24 +26,16 @@ function DeckStudy() {
     return () => abortController.abort();
   }, []);
 
-  //prompt for a restart when the final card's been flipped
-  useEffect(() => {
-    if (hasFlipped && last) {
-      const result = window.confirm(
-        "Restart session?\nClick 'Cancel' to return home instead."
-      );
-      if (result) {
-        setHasFlipped(false);
-        setCardPointer(0);
-      } else {
-        history.push("/");
-      }
-    }
-  }, [hasFlipped, last]);
-
   function nextHandler() {
-    setHasFlipped(false);
     setCardPointer((cardPointer) => cardPointer + 1);
+  }
+
+  function previousHandler() {
+    setCardPointer((cardPointer) => cardPointer - 1);
+  }
+
+  function finishHandler() {
+    history.push(`/decks/${params.deckId}`);
   }
 
   if (!loaded) return <LoadingBars />;
@@ -61,10 +51,9 @@ function DeckStudy() {
         card={deck.cards[cardPointer]}
         view="single"
         nextHandler={nextHandler}
-        last={last}
+        previousHandler={previousHandler}
+        finishHandler={finishHandler}
         pos={pos}
-        hasFlipped={hasFlipped}
-        setHasFlipped={setHasFlipped}
         key={`study-card-${deck.cards[cardPointer].id}`}
       />
     </AutoCentered>

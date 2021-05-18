@@ -41,6 +41,20 @@
   display: flex;
 }
 
+.subButtons {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+}
+
+.subLeft {
+  justify-content: flex-start;
+}
+
+.subRight {
+  justify-content: flex-end;
+}
+
 .buttons a,
 .buttons button {
   margin-left: 5px;

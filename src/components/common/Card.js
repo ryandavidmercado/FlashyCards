@@ -12,16 +12,23 @@ function Card({
   card,
   view = "group",
   updateDeck,
-  last = false,
-  hasFlipped,
-  setHasFlipped,
   nextHandler,
+  previousHandler,
+  finishHandler,
   pos,
 }) {
   const [textPointer, setTextPointer] = useState("front");
+  const [hasFlipped, setHasFlipped] = useState(false);
   const { url } = useRouteMatch();
 
   const params = useParams();
+
+  let first;
+  let last;
+  if (view === "single") {
+    first = pos[0] === 1;
+    last = pos[0] === pos[1];
+  }
 
   function deleteHandler() {
     const result = window.confirm(
@@ -74,12 +81,27 @@ function Card({
             <p>{card[textPointer]}</p>
             <hr />
             <div className={styles.buttons}>
-              <Button variant="secondary" onClick={flipHandler}>
-                Flip
-              </Button>
-              <Button active={hasFlipped && !last} onClick={nextHandler}>
-                Next
-              </Button>
+              <div className={[styles.subButtons, styles.subLeft].join(" ")}>
+                <Button
+                  active={!first}
+                  onClick={previousHandler}
+                  variant="secondary"
+                >
+                  Back
+                </Button>
+              </div>
+              <div className={styles.subButtons}>
+                <Button onClick={flipHandler}>Flip</Button>
+              </div>
+              <div className={[styles.subButtons, styles.subRight].join(" ")}>
+                <Button
+                  variant="secondary"
+                  active={hasFlipped}
+                  onClick={last ? finishHandler : nextHandler}
+                >
+                  {last ? "Finish" : "Next"}
+                </Button>
+              </div>
             </div>
           </Fragment>
         )}
