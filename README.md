@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/ryandavidmercado/FlashyCards/main/screenshots/preview.png" height="300px"/> <img src="https://raw.githubusercontent.com/ryandavidmercado/FlashyCards/main/screenshots/mobile.png" height="300px" />
 
-Interactive flashcard app for creating, editing, and studying flashcard decks. Built in React to demonstrate modern web application development, including responsive design, modular architecture, and complex interactivity via state management and hooks.
+Interactive flashcards application for creating, editing, and studying flashcard decks. Built in React to demonstrate modern web application development, including responsive design, modular architecture, and complex interactivity via state management and hooks.
 
 [Live Site](https://flashy-cards-red.vercel.app/)
 
